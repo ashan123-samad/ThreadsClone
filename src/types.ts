@@ -14,6 +14,6 @@ export type Post={
     user: User;
     parent_id:string | null;
     parent: Post | null;
-    children: Post[];
+    replose: Post[];
 
-}
+};
