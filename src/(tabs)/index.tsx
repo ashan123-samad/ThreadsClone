@@ -4,8 +4,8 @@ import { Link } from "expo-router";
 
 export default function App() {
   return (
-   <View style={styles.container}>
-   <Text>Feed</Text>
+   <View >
+   <Text style={{margin: 20}} className="text-3xl font-bold text-red-500">Feed</Text>
 
 
 
@@ -14,11 +14,3 @@ export default function App() {
   )
   };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor:"#fff",
-  alignItems:"center",
-  justifyContent:"center",
-  },
-})
