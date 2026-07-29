@@ -1,0 +1,185 @@
+﻿Diagnose log at 2026-07-28T10:42:58Z
+
+AppPath: C:\Git\mingw64\bin\git-credential-manager.exe
+InstallDir: C:\Git\mingw64\bin\
+Version: 2.9.0+194ba290ce533465310d50f811684ab180536ae7
+
+------------
+Diagnostic: Environment
+Skipped: False
+Success: True
+Exception: None
+Log:
+OSType: Windows
+OSVersion: 10.0 (build 19043)
+Reading environment variables... OK
+ Variables:
+SESSIONNAME=Console
+ProgramFiles(x86)=C:\Program Files (x86)
+MSYSTEM=MINGW64
+ProgramW6432=C:\Program Files
+ChocolateyInstall=C:\ProgramData\chocolatey
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 142 Stepping 9, GenuineIntel
+TMP=C:\Users\HBLinks\AppData\Local\Temp
+PROCESSOR_ARCHITECTURE=AMD64
+Path=C:/Git/mingw64/libexec/git-core;C:\Git\mingw64\bin;C:\Git\usr\bin;C:\Users\HBLinks\bin;c:\Users\HBLinks\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;c:\Users\HBLinks\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\copilotCli;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Python313\Scripts\;C:\Python313\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk-26.0.1\bin;C:\Git\cmd;C:\Users\HBLinks\AppData\Local\Microsoft\WindowsApps;C:\Users\HBLinks\AppData\Local\Programs\Microsoft VS Code\bin;D:\cursor\resources\app\bin;C:\Users\HBLinks\AppData\Roaming\npm;C:\Program Files\Java\jdk-26.0.1\bin;;C:\Users\HBLinks\AppData\Local\Android\Sdk\platform-toolsc:\Users\HBLinks\.vscode\extensions\vscjava.vscode-java-debug-0.59.0\bundled\scripts\noConfigScripts;C:\Git\cmd;C:\Git\cmd
+PROCESSOR_REVISION=8e09
+TEMP=C:\Users\HBLinks\AppData\Local\Temp
+USERPROFILE=C:\Users\HBLinks
+LOGONSERVER=\\HB-CLIENTPC
+TERM=xterm-256color
+USERNAME=HBLinks
+SystemRoot=C:\Windows
+CHROME_CRASHPAD_PIPE_NAME=\\.\pipe\crashpad_14636_XMWTZQDKVMAXKBMS
+GIT_EXEC_PATH=C:/Git/mingw64/libexec/git-core
+PLINK_PROTOCOL=ssh
+OneDrive=C:\Users\HBLinks\OneDrive
+USERDOMAIN_ROAMINGPROFILE=HB-CLIENTPC
+CommonProgramFiles=C:\Program Files\Common Files
+ZES_ENABLE_SYSMAN=1
+VSCODE_PYTHON_AUTOACTIVATE_GUARD=1
+VSCODE_JAVA_EXEC=C:\Program Files\Java\jdk-26.0.1\bin\java
+ProgramData=C:\ProgramData
+LANG=en_US.UTF-8
+HOMEPATH=\Users\HBLinks
+COMPUTERNAME=HB-CLIENTPC
+VSCODE_INJECTION=1
+ALLUSERSPROFILE=C:\ProgramData
+CommonProgramW6432=C:\Program Files\Common Files
+COPILOT_DEBUG_NONCE=c92d52afb5a55d2f53b935d55f801045
+VSCODE_JDWP_ADAPTER_ENDPOINTS=c:\Users\HBLinks\.vscode\extensions\vscjava.vscode-java-debug-0.59.0\.noConfigDebugAdapterEndpoints\endpoint-9330421f343a5c01.txt
+ANDROID_SDK_ROOT=C:\Users\HBLinks\AppData\Local\Android\Sdk
+DriverData=C:\Windows\System32\Drivers\DriverData
+HOMEDRIVE=C:
+windir=C:\Windows
+GIT_TRACE2_PARENT_SID=3ea1df88-e522-4a5a-b71d-e57fae6f7a3d
+SystemDrive=C:
+NUMBER_OF_PROCESSORS=4
+OS=Windows_NT
+ProgramFiles=C:\Program Files
+ComSpec=C:\Windows\system32\cmd.exe
+PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW;.CPL
+HOME=C:\Users\HBLinks
+PSModulePath=C:\Users\HBLinks\Documents\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+TMPDIR=C:\Users\HBLinks\AppData\Local\Temp
+APPDATA=C:\Users\HBLinks\AppData\Roaming
+USERDOMAIN=HB-CLIENTPC
+PROCESSOR_LEVEL=6
+LOCALAPPDATA=C:\Users\HBLinks\AppData\Local
+ChocolateyLastPathUpdate=134019056809560701
+TERM_PROGRAM_VERSION=1.130.0
+CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files
+COLORTERM=truecolor
+PUBLIC=C:\Users\Public
+TERM_PROGRAM=vscode
+ANDROID_HOME=C:\Users\HBLinks\AppData\Local\Android\Sdk
+
+
+------------
+Diagnostic: File system
+Skipped: False
+Success: True
+Exception: None
+Log:
+Temporary directory is 'C:\Users\HBLinks\AppData\Local\Temp\'...
+Checking basic file I/O...
+Writing to temporary file 'C:\Users\HBLinks\AppData\Local\Temp\2eb94bdfb19a190431c77de8'... OK
+Reading from temporary file 'C:\Users\HBLinks\AppData\Local\Temp\2eb94bdfb19a190431c77de8'... OK
+Deleting temporary file 'C:\Users\HBLinks\AppData\Local\Temp\2eb94bdfb19a190431c77de8'... OK
+Testing IFileSystem instance...
+UserHomePath: C:\Users\HBLinks
+UserDataDirectoryPath: C:\Users\HBLinks\.gcm
+GetCurrentDirectory(): D:\projectnew\my-app
+
+------------
+Diagnostic: Networking
+Skipped: False
+Success: True
+Exception: None
+Log:
+Checking networking and HTTP stack...
+Creating HTTP client... OK
+IsNetworkAvailable: True
+Sending HEAD request to http://example.com... OK
+Sending HEAD request to https://example.com... OK
+Acquiring free TCP port... OK
+Testing local HTTP loopback connections...
+Creating new HTTP listener for http://localhost:4124/... OK
+Waiting for loopback connection... OK
+Writing response... OK
+Waiting for response data... OK
+Loopback connection data OK
+
+------------
+Diagnostic: Git
+Skipped: False
+Success: True
+Exception: None
+Log:
+Getting Git version... OK
+Git version is '2.55.0.windows.3'
+Locating current repository...Git repository at 'D:/projectnew/my-app/.git'
+ OK
+Listing all Git configuration... OK
+Git configuration:
+file:C:/Git/etc/gitconfig	diff.astextplain.textconv=astextplain
+file:C:/Git/etc/gitconfig	filter.lfs.clean=git-lfs clean -- %f
+file:C:/Git/etc/gitconfig	filter.lfs.smudge=git-lfs smudge -- %f
+file:C:/Git/etc/gitconfig	filter.lfs.process=git-lfs filter-process
+file:C:/Git/etc/gitconfig	filter.lfs.required=true
+file:C:/Git/etc/gitconfig	http.sslbackend=schannel
+file:C:/Git/etc/gitconfig	core.autocrlf=true
+file:C:/Git/etc/gitconfig	core.fscache=true
+file:C:/Git/etc/gitconfig	core.symlinks=false
+file:C:/Git/etc/gitconfig	pull.rebase=false
+file:C:/Git/etc/gitconfig	credential.helper=manager
+file:C:/Git/etc/gitconfig	credential.https://dev.azure.com.usehttppath=true
+file:C:/Git/etc/gitconfig	init.defaultbranch=master
+file:C:/Users/HBLinks/.gitconfig	user.name=Ashan Samad
+file:C:/Users/HBLinks/.gitconfig	user.email=ashansamad300@gmail.com
+file:C:/Users/HBLinks/.gitconfig	credential.helper=
+file:C:/Users/HBLinks/.gitconfig	credential.helper=C:/Git/mingw64/bin/git-credential-manager.exe
+file:.git/config	core.repositoryformatversion=0
+file:.git/config	core.filemode=false
+file:.git/config	core.bare=false
+file:.git/config	core.logallrefupdates=true
+file:.git/config	core.symlinks=false
+file:.git/config	core.ignorecase=true
+file:.git/config	remote.origin.url=https://github.com/ashan123-samad/ThreadsClone.git
+file:.git/config	remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+
+
+------------
+Diagnostic: Credential storage
+Skipped: False
+Success: True
+Exception: None
+Log:
+ICredentialStore instance is of type: CredentialStore
+Writing test credential... OK
+Reading test credential... OK
+Deleting test credential... OK
+
+------------
+Diagnostic: Microsoft authentication (AAD/MSA)
+Skipped: False
+Success: True
+Exception: None
+Log:
+Broker is not enabled.
+Gathering MSAL token cache data... OK
+CacheDirectory: C:\Users\HBLinks\AppData\Local\.IdentityService
+CacheFileName: msal.cache
+CacheFilePath: C:\Users\HBLinks\AppData\Local\.IdentityService\msal.cache
+Creating cache helper... OK
+Verifying MSAL token cache persistence... OK
+
+------------
+Diagnostic: GitHub API
+Skipped: False
+Success: True
+Exception: None
+Log:
+Using 'https://github.com/' as API target.
+Querying '/meta' endpoint... OK
+
