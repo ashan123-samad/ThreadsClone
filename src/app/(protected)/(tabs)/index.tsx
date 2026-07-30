@@ -1,25 +1,32 @@
-import { FlatList, View } from "react-native";
+import { FlatList, Pressable, Text, View } from "react-native";
+import { SafeAreaView  } from "react-native-safe-area-context";
 import { posts } from "../../../dummyData";
 import PostListItem from "../../../components/PostListItem";
 import { Link } from "expo-router";
 
 export default function HomeScreen() {
   return (
-    <View style={{ flex: 1, backgroundColor: '#1a1a1a' }}>
-      <FlatList
-        data={posts}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <PostListItem post={item} />
-        )}
-        scrollEnabled={true}
-        nestedScrollEnabled={true}
-        ListHeaderComponent={() =>(
-          <Link href="/new" className="text-blue-500 p-4 text-center text-3xl">
+    <View style={{ flex: 1, backgroundColor: "#000" }}>
+  <FlatList
+    data={posts}
+    keyExtractor={(item) => item.id}
+    renderItem={({ item }) => <PostListItem post={item} />}
+    ListHeaderComponent={() => (
+      <Link href="/new" asChild>
+        <Pressable
+          style={{
+            backgroundColor: "black",
+            padding: 10,
+            margin: 10,
+          }}
+        >
+          <Text style={{ color: "white", textAlign: "center" }}>
             New Post
-          </Link>
-        )}
-      />
-    </View>
+          </Text>
+        </Pressable>
+      </Link>
+    )}
+  />
+</View>
   );
 }

@@ -18,7 +18,7 @@ export default function PostListItem({ post }: { post: Post }) {
       <View style={{ flexDirection: 'row' }}>
         <Image
           source={{ uri: post.user.image }}
-          style={{ marginRight: 12, height: 44, width: 44, borderRadius: 9999 }}
+          style={{ width:44, height: 44,  borderRadius: 9999 }}
         />
 
         <View style={{ flex: 1 }}>
