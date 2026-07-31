@@ -11,15 +11,21 @@ import {
   useColorScheme,
 } from "react-native";
 
-export default function Login() {
+export default function Signup() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const colorScheme = useColorScheme();
   const isDark = colorScheme === "dark";
 
-  const handleLogin = () => {
+  const handleSignup = () => {
+    if (password !== confirmPassword) {
+      console.log("Passwords do not match");
+      return;
+    }
     // TODO: hook up your auth logic here
-    console.log("Logging in with:", email, password);
+    console.log("Signing up with:", name, email, password);
   };
 
   return (
@@ -32,11 +38,26 @@ export default function Login() {
         {/* Header */}
         <View className="mb-10">
           <Text className="text-3xl font-bold text-gray-900 dark:text-white">
-            Welcome back
+            Create account
           </Text>
           <Text className="text-base text-gray-500 dark:text-gray-400 mt-2">
-            Sign in to continue
+            Sign up to get started
           </Text>
+        </View>
+
+        {/* Name input */}
+        <View className="mb-4">
+          <Text className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            Full name
+          </Text>
+          <TextInput
+            value={name}
+            onChangeText={setName}
+            placeholder="John Doe"
+            placeholderTextColor={isDark ? "#6B7280" : "#9CA3AF"}
+            autoCapitalize="words"
+            className="border border-gray-300 dark:border-gray-700 rounded-xl px-4 py-3 text-base text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-900"
+          />
         </View>
 
         {/* Email input */}
@@ -56,7 +77,7 @@ export default function Login() {
         </View>
 
         {/* Password input */}
-        <View className="mb-6">
+        <View className="mb-4">
           <Text className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Password
           </Text>
@@ -70,26 +91,41 @@ export default function Login() {
           />
         </View>
 
-        {/* Login button */}
+        {/* Confirm Password input */}
+        <View className="mb-6">
+          <Text className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            Confirm password
+          </Text>
+          <TextInput
+            value={confirmPassword}
+            onChangeText={setConfirmPassword}
+            placeholder="••••••••"
+            placeholderTextColor={isDark ? "#6B7280" : "#9CA3AF"}
+            secureTextEntry
+            className="border border-gray-300 dark:border-gray-700 rounded-xl px-4 py-3 text-base text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-900"
+          />
+        </View>
+
+        {/* Signup button */}
         <TouchableOpacity
-          onPress={handleLogin}
+          onPress={handleSignup}
           activeOpacity={0.8}
           className="bg-black dark:bg-white rounded-xl py-4 items-center"
         >
           <Text className="text-white dark:text-black text-base font-semibold">
-            Log In
+            Sign Up
           </Text>
         </TouchableOpacity>
 
-        {/* Sign up link */}
+        {/* Login link */}
         <View className="flex-row justify-center mt-6">
           <Text className="text-gray-500 dark:text-gray-400 text-sm">
-            Don't have an account?{" "}
+            Already have an account?{" "}
           </Text>
-          <Link href="/signup" asChild>
+          <Link href="/login" asChild>
             <TouchableOpacity>
               <Text className="text-black dark:text-white text-sm font-semibold">
-                Create one
+                Log in
               </Text>
             </TouchableOpacity>
           </Link>

@@ -1,7 +1,7 @@
-import { Image, Pressable, Text, View } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { Image, Pressable, Text, View } from "react-native";
 import type { Post } from "../types";
 
 dayjs.extend(relativeTime);
@@ -16,11 +16,12 @@ export default function PostListItem({ post }: { post: Post }) {
   return (
    <Pressable style={{ borderBottomWidth: 1, borderBottomColor: '#333', backgroundColor: '#252525', paddingHorizontal: 16, paddingVertical: 16 }}>
       <View style={{ flexDirection: 'row' }}>
+        <View style={{ justifyContent: 'center',alignItems: 'center' }}>
         <Image
           source={{ uri: post.user.image }}
-          style={{ width:44, height: 44,  borderRadius: 9999 }}
+          style={{ width:44, height: 44,  borderRadius: 9999 ,marginRight: 10}}
         />
-
+</View>
         <View style={{ flex: 1 }}>
           <View style={{ marginBottom: 4, flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center' }}>
             <Text style={{ marginRight: 8, fontWeight: '600', color: 'white' }}>
