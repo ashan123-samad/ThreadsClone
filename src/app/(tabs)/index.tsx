@@ -12,7 +12,8 @@ export default function HomeScreen() {
   keyExtractor={(item) => item.id}
   renderItem={({ item }) => <PostListItem post={item} />}
   ListHeaderComponent={() => (
-  
+
+  <>
      <Link href="/new" asChild>
     <Pressable
       style={{
@@ -34,6 +35,30 @@ export default function HomeScreen() {
       </Text>
     </Pressable>
   </Link>
+
+   <Link href="/login" asChild>
+    <Pressable
+      style={{
+        margin: 16,
+        padding: 16,
+        backgroundColor: "white",
+        borderRadius: 10,
+      }}
+    >
+      <Text
+        style={{
+          color: "black",
+          fontSize: 18,
+          fontWeight: "bold",
+          textAlign: "center",
+        }}
+      >
+        Login
+      </Text>
+    </Pressable>
+  </Link>
+
+  </>
   )}
 />
     
