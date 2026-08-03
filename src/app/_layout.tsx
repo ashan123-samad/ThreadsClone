@@ -1,7 +1,8 @@
 import '../global.css';
 
+import { AuthProvider } from "@/providers/AuthProvider";
+import { DarkTheme, ThemeProvider } from "@react-navigation/native";
 import { Slot } from "expo-router";
-import { ThemeProvider, DarkTheme } from "@react-navigation/native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 const myTheme = {
@@ -16,12 +17,16 @@ const myTheme = {
 export default function RootLayout() {
   return (
      <SafeAreaProvider>
+
       <SafeAreaView
       style={{ flex: 1, backgroundColor: "black" }}
       edges={["top"]}
     >
       <ThemeProvider value={myTheme}>
-        <Slot />
+        
+        <AuthProvider>
+          <Slot />
+        </AuthProvider>
       </ThemeProvider>
     </SafeAreaView>
     </SafeAreaProvider>

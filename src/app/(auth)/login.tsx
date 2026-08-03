@@ -1,6 +1,8 @@
-import { Link } from "expo-router";
+import { supabase } from "@/lib/supabase";
+import { Link, useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
+  Alert,
   KeyboardAvoidingView,
   Platform,
   StatusBar,
@@ -14,12 +16,30 @@ import {
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
   const colorScheme = useColorScheme();
   const isDark = colorScheme === "dark";
 
-  const handleLogin = () => {
-    // TODO: hook up your auth logic here
-    console.log("Logging in with:", email, password);
+  const handleLogin = async () => {
+    if (!email || !password) {
+      Alert.alert("Error", "Please enter your email and password.");
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      const { error } = await supabase.auth.signInWithPassword({ 
+        email,
+        password,
+      });
+      if (error) Alert.alert(error.message);
+    } catch (error) {
+      console.error("Login error:", error);
+      Alert.alert("Error", "Something went wrong. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -74,10 +94,11 @@ export default function Login() {
         <TouchableOpacity
           onPress={handleLogin}
           activeOpacity={0.8}
+          disabled={isLoading}
           className="bg-black dark:bg-white rounded-xl py-4 items-center"
         >
           <Text className="text-white dark:text-black text-base font-semibold">
-            Log In
+            {isLoading ? "Signing in..." : "Log In"}
           </Text>
         </TouchableOpacity>
 
