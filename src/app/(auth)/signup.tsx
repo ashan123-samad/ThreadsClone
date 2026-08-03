@@ -1,14 +1,14 @@
-import React, { useState } from "react";
 import { Link } from "expo-router";
+import React, { useState } from "react";
 import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
   StatusBar,
+  Text,
+  TextInput,
+  TouchableOpacity,
   useColorScheme,
+  View,
 } from "react-native";
 
 export default function Signup() {
@@ -125,7 +125,7 @@ export default function Signup() {
           <Link href="/login" asChild>
             <TouchableOpacity>
               <Text className="text-black dark:text-white text-sm font-semibold">
-                Log in
+                Sign in
               </Text>
             </TouchableOpacity>
           </Link>

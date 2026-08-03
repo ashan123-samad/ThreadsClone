@@ -1,14 +1,14 @@
-import React, { useState } from "react";
 import { Link } from "expo-router";
+import React, { useState } from "react";
 import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
   StatusBar,
+  Text,
+  TextInput,
+  TouchableOpacity,
   useColorScheme,
+  View,
 } from "react-native";
 
 export default function Login() {

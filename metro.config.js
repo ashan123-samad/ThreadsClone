@@ -3,7 +3,8 @@ const { withNativeWind } = require("nativewind/metro");
 
 const config = getDefaultConfig(__dirname);
 
-console.log("✅ Metro Config Loaded");
+// Limit parallel workers to avoid OOM during NativeWind/Tailwind transforms
+config.maxWorkers = 2;
 
 module.exports = withNativeWind(config, {
   input: "./src/global.css",

@@ -38,16 +38,15 @@
     "tailwindcss": "^3.4.19"
   },
   "devDependencies": {
-    "@expo/metro-runtime": "^57.0.7",
     "@types/react": "~19.1.10",
     "typescript": "~5.9.2"
   },
   "scripts": {
-    "start": "expo start",
+    "start": "set NODE_OPTIONS=--max-old-space-size=8192&& expo start",
     "reset-project": "node ./scripts/reset-project.js",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
+    "android": "set NODE_OPTIONS=--max-old-space-size=8192&& expo start --android",
+    "ios": "set NODE_OPTIONS=--max-old-space-size=8192&& expo start --ios",
+    "web": "set NODE_OPTIONS=--max-old-space-size=8192&& expo start --web",
     "lint": "expo lint"
   },
   "private": true
