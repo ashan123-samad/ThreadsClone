@@ -1,17 +1,30 @@
+import { supabase } from "@/lib/supabase";
+import { useAuth } from "@/providers/AuthProvider";
 import { useState } from "react";
 import {
-View, 
-Text,
-TextInput,
-Pressable,
-KeyboardAvoidingView,
-Platform
-} 
-from "react-native";
+    KeyboardAvoidingView,
+    Platform,
+    Pressable,
+    Text,
+    TextInput,
+    View
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Stack } from "expo-router";
 export default function NewPostScreen() {
     const [text, setText]  = useState('');
+    const { user } = useAuth();
+    const onSubmit = async () => {
+        if (!text || !user) return;
+
+ const { data, error } = await supabase
+ .from('posts')
+.insert({ content: text, user_id: user.id });
+
+if (error) {
+    console.error(error);
+}
+setText('');
+  };
     return(
         <SafeAreaView edges={["bottom"]} className="p-4 flex-1" >
         <KeyboardAvoidingView 
@@ -35,17 +48,8 @@ export default function NewPostScreen() {
             numberOfLines={4}
             />
             <View className="mt-auto">
-                <Pressable onPress={() => console.log('post:')}
-                style={{
-                    backgroundColor: "#ffffff",
-                    paddingVertical: 10,
-                    paddingHorizontal: 20,
-                    borderRadius: 999,
-                    alignSelf: "flex-end",
-                    marginTop: 20,
-
-                }}
-                className="bg-blue-600 p-3 px-6 self-end rounded-full"
+                <Pressable onPress={onSubmit}
+                className="bg-white p-3 px-6 self-end rounded-full"
                 
                 >
                     <Text className="text-white font-bold">

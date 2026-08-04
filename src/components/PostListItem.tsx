@@ -18,7 +18,7 @@ export default function PostListItem({ post }: { post: Post }) {
       <View style={{ flexDirection: 'row' }}>
         <View style={{ justifyContent: 'center',alignItems: 'center' }}>
         <Image
-          source={{ uri: post.user.image }}
+          source={{ uri: post.user.avatar_url }}
           style={{ width:44, height: 44,  borderRadius: 9999 ,marginRight: 10}}
         />
 </View>
@@ -35,7 +35,7 @@ export default function PostListItem({ post }: { post: Post }) {
             <Text style={{ marginRight: 8, fontSize: 14, color: '#999' }}>•</Text>
 
             <Text style={{ fontSize: 14, color: '#999' }}>
-              {formatDate(post.createdAt)}
+              {formatDate(post.created_at)}
             </Text>
           </View>
 
