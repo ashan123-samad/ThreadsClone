@@ -17,20 +17,20 @@ const fetchPosts = async () => {
 
 export default function HomeScreen() {
   const {data, isLoading, error} = useQuery({
-    queryKey: ['posts'],
+    queryKey: ['posts'],  
     queryFn: fetchPosts,
   });
  
 if(isLoading){
 return <ActivityIndicator />;
 } 
-if(error) {
+if(error) { 
   return <Text className="text-red-500">{error.message}</Text>
 }
 
   return (
     <FlatList
-    data={posts}
+    data={data ?? []}
     renderItem={({ item }) => <PostListItem post={item} />}
     ListHeaderComponent={() => (
       <>
