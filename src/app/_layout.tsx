@@ -2,9 +2,10 @@ import '../global.css';
 
 import { AuthProvider } from "@/providers/AuthProvider";
 import { DarkTheme, ThemeProvider } from "@react-navigation/native";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Slot } from "expo-router";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-
+const queryClient = new QueryClient();
 const myTheme = {
   ...DarkTheme,
   colors: {
@@ -23,10 +24,13 @@ export default function RootLayout() {
       edges={["top"]}
     >
       <ThemeProvider value={myTheme}>
-        
+        <QueryClientProvider client={queryClient}>
+
         <AuthProvider>
           <Slot />
         </AuthProvider>
+        </QueryClientProvider>
+        
       </ThemeProvider>
     </SafeAreaView>
     </SafeAreaProvider>
