@@ -1,13 +1,13 @@
-import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
-
+import { router, Tabs } from "expo-router";
+import { View } from "react-native-reanimated/lib/typescript/Animated";
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: "#000",
+          backgroundColor: "#888", 
           borderTopColor: "#222",
         },
         tabBarActiveTintColor: "white",
@@ -23,7 +23,7 @@ export default function TabLayout() {
           ),
         }}
       />
-
+          
       <Tabs.Screen
         name="search"
         options={{
@@ -33,6 +33,26 @@ export default function TabLayout() {
           ),
         }}
       />
+
+<Tabs.Screen
+        name="plus"
+        options={{
+          title: "Plus",
+          tabBarIcon: ({ color, size }) => (
+            <View className='bg-neutral-700 rounded-xl w-36 p-1'>
+                <Ionicons name="person-outline" size={size} color={color} />
+            </View>
+          
+          ),
+        }}
+          listeners= {{
+            tabPress: (e) =>{
+            e.preventDefault();
+            router.push('/new');
+          },
+        }}
+      />
+
 
       <Tabs.Screen
         name="notification"
@@ -53,6 +73,7 @@ export default function TabLayout() {
           ),
         }}
       />
+  
     </Tabs>
   );
 }
