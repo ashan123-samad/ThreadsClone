@@ -1,66 +1,68 @@
-import { Ionicons } from "@expo/vector-icons";
-import { router, Tabs } from "expo-router";
-import { View } from "react-native-reanimated/lib/typescript/Animated";
+import { TabBarIcon, type TabIconName } from "@/components/TabBarIcon";
+import { Tabs } from "expo-router";
+import { Platform } from "react-native";
+
+const icon =
+  (name: TabIconName) =>
+  ({ color }: { color: string; size: number }) =>
+    <TabBarIcon name={name} color={color} />;
+
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
+        tabBarActiveTintColor: "#ffffff",
+        tabBarInactiveTintColor: "#999999",
         tabBarStyle: {
-          backgroundColor: "#888", 
-          borderTopColor: "#222",
+          backgroundColor: "#252525",
+          borderTopColor: "#444444",
+          borderTopWidth: 1,
+          height: Platform.OS === "android" ? 72 : 65,
+          paddingBottom: Platform.OS === "android" ? 10 : 8,
+          paddingTop: 8,
         },
-        tabBarActiveTintColor: "white",
-        tabBarInactiveTintColor: "gray",
+        tabBarLabelStyle: {
+          fontSize: 11,
+          marginTop: 2,
+        },
+        tabBarIconStyle: {
+          marginTop: 2,
+        },
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="(home)"
         options={{
           title: "Home",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home" size={size} color={color} />
-          ),
+          headerShown: false,
+          tabBarIcon: icon("home"),
         }}
       />
-          
+
       <Tabs.Screen
         name="search"
         options={{
           title: "Search",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="search" size={size} color={color} />
-          ),
+          tabBarIcon: icon("search"),
         }}
       />
 
-<Tabs.Screen
+      <Tabs.Screen
         name="plus"
         options={{
-          title: "Plus",
-          tabBarIcon: ({ color, size }) => (
-            <View className='bg-neutral-700 rounded-xl w-36 p-1'>
-                <Ionicons name="person-outline" size={size} color={color} />
-            </View>
-          
+          title: "",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="add" color={color} size={30} />
           ),
         }}
-          listeners= {{
-            tabPress: (e) =>{
-            e.preventDefault();
-            router.push('/new');
-          },
-        }}
       />
-
 
       <Tabs.Screen
         name="notification"
         options={{
           title: "Activity",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="heart-outline" size={size} color={color} />
-          ),
+          tabBarIcon: icon("activity"),
         }}
       />
 
@@ -68,12 +70,9 @@ export default function TabLayout() {
         name="profile"
         options={{
           title: "Profile",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person-outline" size={size} color={color} />
-          ),
+          tabBarIcon: icon("profile"),
         }}
       />
-  
     </Tabs>
   );
 }

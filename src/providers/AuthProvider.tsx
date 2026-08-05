@@ -1,3 +1,4 @@
+
 import { getSupabase, isSupabaseConfigured } from "@/lib/supabase";
 import type { Session, User } from "@supabase/supabase-js";
 import {
@@ -15,7 +16,9 @@ export type AuthContextType = {
   isAuthenticated: boolean;
 };
 
-export const AuthContext = createContext<AuthContextType | undefined>(undefined);
+export const AuthContext = createContext<AuthContextType | undefined>(
+  undefined
+);
 
 type AuthProviderProps = {
   children: ReactNode;
@@ -27,10 +30,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [isReady, setIsReady] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-
   useEffect(() => {
     if (!isSupabaseConfigured) {
       setIsReady(true);
+      setIsLoading(false);
       return;
     }
 
@@ -52,14 +55,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     return () => subscription.unsubscribe();
   }, []);
-  if (isLoading) {
-    return (
-      <View className="flex-1 items-center justify-center bg-white dark:bg-black">
-        <ActivityIndicator size="large" />
-      </View>
-    );
-  }
 
+  // IMPORTANT: useMemo must run on every render.
+  // It must be above all conditional returns.
   const value = useMemo<AuthContextType>(
     () => ({
       user,
@@ -67,6 +65,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }),
     [session, user]
   );
+
+  if (isLoading) {
+    return (
+      <View className="flex-1 items-center justify-center bg-white dark:bg-black">
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
 
   if (!isReady) {
     return (
@@ -82,18 +88,23 @@ export function AuthProvider({ children }: AuthProviderProps) {
         <Text className="text-xl font-bold text-gray-900 dark:text-white text-center mb-3">
           Supabase not configured
         </Text>
+
         <Text className="text-base text-gray-500 dark:text-gray-400 text-center mb-4">
-          Edit the `.env` file in your project root and paste your real Supabase
-          credentials. Spelling must be exact:
+          Edit the `.env` file in your project root and paste your real
+          Supabase credentials. Spelling must be exact:
         </Text>
+
         <Text className="text-sm font-mono text-gray-700 dark:text-gray-300 text-center mb-1">
           EXPO_PUBLIC_SUPABASE_URL
         </Text>
+
         <Text className="text-sm font-mono text-gray-700 dark:text-gray-300 text-center mb-4">
           EXPO_PUBLIC_SUPABASE_ANON_KEY
         </Text>
+
         <Text className="text-sm text-gray-500 dark:text-gray-400 text-center">
-          Supabase Dashboard → Project Settings → API → Project URL and anon public key.
+          Supabase Dashboard → Project Settings → API → Project URL and anon
+          public key.
           {"\n\n"}
           Save `.env`, stop Expo (Ctrl+C), then run: npm run start:clear
         </Text>
@@ -102,7 +113,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }
 
   return (
-    <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={value}>
+      {children}
+    </AuthContext.Provider>
   );
 }
 
@@ -115,3 +128,4 @@ export function useAuth(): AuthContextType {
 
   return context;
 }
+

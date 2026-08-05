@@ -1,3 +1,4 @@
+import { Database } from "@/types/database.types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { AppState, Platform } from "react-native";
@@ -41,7 +42,7 @@ export function getSupabase(): SupabaseClient {
 }
 
 /** @deprecated Prefer getSupabase() so missing env fails at use-time, not import-time. */
-export const supabase = new Proxy({} as SupabaseClient, {
+export const supabase = new Proxy({} as SupabaseClient<Database> ,{
   get(_target, prop, receiver) {
     return Reflect.get(getSupabase(), prop, receiver);
   },

@@ -161,7 +161,7 @@ Reading test credential... OK
 Deleting test credential... OK
 
 ------------
-Diagnostic: Microsoft authentication (AAD/MSA)
+Diagnostic: Microsoft entication (AAD/MSA)
 Skipped: False
 Success: True
 Exception: None

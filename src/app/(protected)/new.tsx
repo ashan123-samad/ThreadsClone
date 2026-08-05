@@ -5,7 +5,6 @@ import { router } from "expo-router";
 import { useState } from "react";
 
 import {
-    Alert,
     KeyboardAvoidingView,
     Platform,
     Pressable,
@@ -14,7 +13,7 @@ import {
     View
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-const createPost = async (content: string. user_id: string ) => {
+const createPost = async (content: string, user_id: string ) => {
     const {data} = await supabase
     .from('posts')
     .insert({content, user_id})
@@ -29,7 +28,7 @@ export default function NewPostScreen() {
  
     const queryClient = useQueryClient();
 
-    const { mutate, isPending } = useMutation({
+    const { mutate, isPending, error } = useMutation({
     mutationFn: () => createPost(text, user!.id),
     onSuccess: (data) => {
         setText('');
