@@ -16,22 +16,17 @@ export default function PostReplyInput ({postID}: { postID: string}){
     const queryClient = useQueryClient();
 
     const { mutate, isPending, error } = useMutation({
-    mutationFn: () => createPost(text, user!.id, postID),
+    mutationFn: () => 
+        createPost({content: text,user_id: user!.id, parent_id: postID}),
     onSuccess: (data) => {
         setText('');
-    
-    //    queryClient.invalidateQueries({ queryKey: ['posts']});
+        queryClient.invalidateQueries({ queryKey: ['posts',postID, 'replies']});
     },
     onError: (error) => {
         console.error(error);
         //Alert.alert('Error', error.message);
     },
 });
-
-
-
-
-
 
     return (
         <View className="p-4">

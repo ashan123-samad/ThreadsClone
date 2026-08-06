@@ -12,3 +12,22 @@ export const createPost = async ( newPost : PostInput) =>{
 
     return data;
 };
+export const getPostbyId = async (id: string) => {
+    const {data } = await supabase
+    .from('posts')
+    .select('*, user:profiles(*)')
+    .eq('id', id)
+    .single()
+    .throwOnError();
+
+    return data;
+};
+export const getPostsReplies = async (id: string) => {
+    const {data } = await supabase
+    .from('posts')
+    .select('*, user:profiles(*)')
+    .eq('parent_id', id)
+    .throwOnError();
+
+    return data;
+};
