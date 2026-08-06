@@ -43,7 +43,7 @@ const getUser = (id: string): User => users.find((user) => user.id === id) as Us
 export const posts: Post[] = [
   {
     id: 'post-1',
-    createdAt: '2026-07-20T09:00:00.000Z',
+    created_at: '2026-07-20T09:00:00.000Z',
     content: 'Just shipped a cleaner onboarding flow for the app. Feels much more intuitive now.',
     user_id: 'user-1',
     user: getUser('user-1'),
@@ -53,7 +53,7 @@ export const posts: Post[] = [
   },
   {
     id: 'post-2',
-    createdAt: '2026-07-20T10:15:00.000Z',
+    created_at: '2026-07-20T10:15:00.000Z',
     content: 'Anyone else obsessed with the new dark mode? It makes late-night coding so much easier.',
     user_id: 'user-2',
     user: getUser('user-2'),
@@ -63,7 +63,7 @@ export const posts: Post[] = [
   },
   {
     id: 'post-3',
-    createdAt: '2026-07-20T11:30:00.000Z',
+    created_at: '2026-07-20T11:30:00.000Z',
     content: 'I found the best sunset spot near the river this weekend. The photos came out amazing.',
     user_id: 'user-3',
     user: getUser('user-3'),
@@ -73,7 +73,7 @@ export const posts: Post[] = [
   },
   {
     id: 'post-4',
-    createdAt: '2026-07-21T07:20:00.000Z',
+    created_at: '2026-07-21T07:20:00.000Z',
     content: 'Tried a new taco recipe at home and it was a huge hit. I might be making it again this week.',
     user_id: 'user-4',
     user: getUser('user-4'),
@@ -83,7 +83,7 @@ export const posts: Post[] = [
   },
   {
     id: 'post-5',
-    createdAt: '2026-07-21T08:45:00.000Z',
+    created_at: '2026-07-21T08:45:00.000Z',
     content: 'A tiny habit I am keeping this month is writing one sentence before bed. It clears my mind.',
     user_id: 'user-5',
     user: getUser('user-5'),
@@ -93,7 +93,7 @@ export const posts: Post[] = [
   },
   {
     id: 'post-6',
-    createdAt: '2026-07-21T09:10:00.000Z',
+    created_at: '2026-07-21T09:10:00.000Z',
     content: 'The new dashboard feels so much lighter. Great work to the team.',
     user_id: 'user-1',
     user: getUser('user-1'),
@@ -103,7 +103,7 @@ export const posts: Post[] = [
   },
   {
     id: 'post-7',
-    createdAt: '2026-07-21T13:05:00.000Z',
+    created_at: '2026-07-21T13:05:00.000Z',
     content: 'I am finally getting into the habit of morning runs again. The fresh air is everything.',
     user_id: 'user-4',
     user: getUser('user-4'),
@@ -113,7 +113,7 @@ export const posts: Post[] = [
   },
   {
     id: 'post-8',
-    createdAt: '2026-07-22T06:30:00.000Z',
+    created_at: '2026-07-22T06:30:00.000Z',
     content: 'The best part of my weekend was a long walk and a good book. It felt like a reset button.',
     user_id: 'user-3',
     user: getUser('user-3'),
@@ -123,7 +123,7 @@ export const posts: Post[] = [
   },
   {
     id: 'post-9',
-    createdAt: '2026-07-22T12:00:00.000Z',
+    created_at: '2026-07-22T12:00:00.000Z',
     content: 'I have been collecting tiny design inspiration from the city lately. It is surprisingly motivating.',
     user_id: 'user-2',
     user: getUser('user-2'),
@@ -133,7 +133,7 @@ export const posts: Post[] = [
   },
   {
     id: 'post-10',
-    createdAt: '2026-07-22T15:40:00.000Z',
+    created_at: '2026-07-22T15:40:00.000Z',
     content: 'The weekend playlist is officially the soundtrack of my productivity. I cannot stop replaying it.',
     user_id: 'user-5',
     user: getUser('user-5'),
@@ -143,7 +143,7 @@ export const posts: Post[] = [
   },
   {
     id: 'post-11',
-    createdAt: '2026-07-23T09:20:00.000Z',
+    created_at: '2026-07-23T09:20:00.000Z',
     content: 'That onboarding flow looks amazing. I would love to see the same treatment on the settings page.',
     user_id: 'user-2',
     user: getUser('user-2'),
@@ -153,7 +153,7 @@ export const posts: Post[] = [
   },
   {
     id: 'post-12',
-    createdAt: '2026-07-23T10:05:00.000Z',
+    created_at: '2026-07-23T10:05:00.000Z',
     content: 'The river photos are stunning. I would happily frame one of those.',
     user_id: 'user-1',
     user: getUser('user-1'),
@@ -163,7 +163,7 @@ export const posts: Post[] = [
   },
   {
     id: 'post-13',
-    createdAt: '2026-07-23T11:45:00.000Z',
+    created_at: '2026-07-23T11:45:00.000Z',
     content: 'I am definitely trying that taco recipe next weekend. Thanks for the inspiration!',
     user_id: 'user-5',
     user: getUser('user-5'),
@@ -173,7 +173,7 @@ export const posts: Post[] = [
   },
   {
     id: 'post-14',
-    createdAt: '2026-07-23T18:10:00.000Z',
+    created_at: '2026-07-23T18:10:00.000Z',
     content: 'That sentence-before-bed habit sounds so simple but so powerful. I might start it too.',
     user_id: 'user-4',
     user: getUser('user-4'),
@@ -183,7 +183,7 @@ export const posts: Post[] = [
   },
   {
     id: 'post-15',
-    createdAt: '2026-07-24T08:00:00.000Z',
+    created_at: '2026-07-24T08:00:00.000Z',
     content: 'Dark mode and a good playlist together is a pretty unbeatable combo for focus.',
     user_id: 'user-3',
     user: getUser('user-3'),

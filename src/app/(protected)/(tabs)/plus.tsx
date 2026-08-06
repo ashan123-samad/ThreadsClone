@@ -1,6 +1,7 @@
+import NewPostScreen from "../new";
 
 export default function() {
-    return null ;
+    return <NewPostScreen></NewPostScreen> ;
         
         
 }

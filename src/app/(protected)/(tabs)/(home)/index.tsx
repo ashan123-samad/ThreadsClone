@@ -4,13 +4,12 @@ import { useQuery } from '@tanstack/react-query';
 import { ActivityIndicator, FlatList, Text } from "react-native";
 
 const fetchPosts = async () => {
-  const { data} = await supabase
-  .from('posts')
-  .select('*, user:profiles(*)')
-  .throwOnError();
+  const { data } = await supabase
+    .from("posts")
+    .select(`* , user:profiles(*)`)
+    .throwOnError();
 
- return data;
- 
+  return data;
 };
 
 
@@ -19,7 +18,7 @@ export default function HomeScreen() {
     queryKey: ['posts'],  
     queryFn: fetchPosts,
   });
- 
+ console.log(data)
 if(isLoading){
 return <ActivityIndicator />;
 } 
@@ -30,7 +29,10 @@ if(error) {
   return (
     <FlatList
     data={data ?? []}
-    renderItem={({ item }) => <PostListItem post={item} />}
+    keyExtractor={(item) => item.id}
+    renderItem={({ item }) => (
+       <PostListItem post={item} />
+  )}
   
     />
   );

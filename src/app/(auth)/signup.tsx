@@ -60,7 +60,7 @@ export default function Signup() {
       }
 
       if (session) {
-        router.replace("/(protected)/(tabs)");
+        router.replace("/(protected)/(tabs)/(home)");
       } else {
         Alert.alert(
           "Check your email",

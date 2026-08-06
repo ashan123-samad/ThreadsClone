@@ -4,6 +4,7 @@ export type User={
     name: string;
     image:string;
     avatar_url: string | null;
+    bio: string;
 }
 
 export type Post={

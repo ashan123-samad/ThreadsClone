@@ -1,11 +1,11 @@
-import "../lib/register-icons";
 import "../global.css";
+import "../lib/register-icons";
 
 import { AuthProvider } from "@/providers/AuthProvider";
-import { DarkTheme, ThemeProvider } from "@react-navigation/native";
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { DarkTheme, ThemeProvider } from "@react-navigation/native";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useFonts } from "expo-font";
 import { Slot } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
@@ -21,6 +21,7 @@ const myTheme = {
     ...DarkTheme.colors,
     primary: 'white',
     card: '#101010',
+    backgroung:'#101010'
   },
 };
 
