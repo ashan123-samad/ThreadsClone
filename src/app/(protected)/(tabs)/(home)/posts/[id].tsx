@@ -10,7 +10,7 @@ export default function PostDetails() {
     const { id } = useLocalSearchParams<{id: string}>();
     
     const {data: post, isLoading, error} = useQuery ({
-        queryKey: ['post', id],
+        queryKey: ['posts', id],
         queryFn: () => getPostById(id),
         staleTime: 1000 * 68 * 5,
     });

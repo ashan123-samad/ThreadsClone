@@ -1,4 +1,4 @@
-import type { Database } from "@/types/database.types";
+import { Tables } from "@/types/database.types";
 import { Feather } from "@expo/vector-icons";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -7,11 +7,11 @@ import { Image, Pressable, Text, View } from "react-native";
 
 dayjs.extend(relativeTime);
 
-type Post = Database["public"]["Tables"]["posts"]["Row"];
-type Profile = Database["public"]["Tables"]["profiles"]["Row"];
-
-type PostWithUser = Post & {
-  user: Profile;
+type PostWithUser= Tables<"posts"> & {
+  user: Tables<"profiles">;
+  replies: {
+    count: number;
+  }[];
 };
 
 function formatDate(value: string) {

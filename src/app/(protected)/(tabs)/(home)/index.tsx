@@ -1,14 +1,15 @@
 import PostListItem from "@/components/PostListItem";
 import { supabase } from "@/lib/supabase";
+import { fetchPosts } from "@/services/posts";
 import { useQuery } from '@tanstack/react-query';
 import { ActivityIndicator, FlatList, Text } from "react-native";
 
 const fetchPosts = async () => {
-  const { data } = await supabase
+   const { data } = await supabase
     .from("posts")
     .select(`* , user:profiles(*)`)
     .throwOnError();
-
+ 
   return data;
 };
 
