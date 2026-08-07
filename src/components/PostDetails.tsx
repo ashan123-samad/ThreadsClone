@@ -9,7 +9,7 @@ dayjs.extend(relativeTime);
 
 type PostWithUser= Tables<"posts"> & {
   user: Tables<"profiles">;
-  replies: {
+  replies?: {
     count: number;
   }[];
 };

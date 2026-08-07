@@ -9,9 +9,9 @@ dayjs.extend(relativeTime);
 
 type PostWithUser= Tables<"posts"> & {
   user: Tables<"profiles">;
-  replies: {
+  replies?: {
     count: number;
-  }[];
+  }[];  
 };
 
 function formatDate(value: string) {
@@ -19,22 +19,19 @@ function formatDate(value: string) {
 }
 
 export default function PostListItem({
-  post,
+  post, isLastInGroup=true,
 }: {
-  post: PostWithUser;
+  post: PostWithUser; 
+  isLastInGroup?: boolean
 }) {
   return (
     <Link href={`/posts/${post.id}`} asChild>
       <Pressable
-        style={{
-          borderBottomWidth: 1,
-          borderBottomColor: "#333",
-          backgroundColor: "#252525",
-          paddingHorizontal: 16,
-          paddingVertical: 16,
-        }}
+      className={`flex-row  ${
+        isLastInGroup ? 'border-b border-gray-800/70': ''}`}
+      
       >
-        <View style={{ flexDirection: "row" }}>
+        <View className="mr-3 items-center gap-2   ">
           <Image
             source={{
               uri:
@@ -46,8 +43,11 @@ export default function PostListItem({
               height: 44,
               borderRadius: 9999,
               marginRight: 10,
-            }}
+            }} 
           />
+
+         {!isLastInGroup &&
+          <View className=" w-[3px]  flex-1 rounded-full bg-neutral-700 translate-y-2 scale-125" /> }
 
           <View style={{ flex: 1 }}>
             <View
