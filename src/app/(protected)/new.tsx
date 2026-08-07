@@ -1,10 +1,13 @@
 import { useAuth } from "@/providers/AuthProvider";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import * as ImagePicker from 'expo-image-picker';
 import { router } from "expo-router";
 import { useState } from "react";
 
 import { createPost } from "@/services/posts";
+import { Entypo } from "@expo/vector-icons";
 import {
+    Image,
     KeyboardAvoidingView,
     Platform,
     Pressable,
@@ -15,7 +18,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 export default function NewPostScreen() {
     const [text, setText]  = useState('');
-
+    const [image, setImage] = useState<string | null>(null);
     const { user } = useAuth();
  
     const queryClient = useQueryClient();
@@ -32,6 +35,18 @@ export default function NewPostScreen() {
         //Alert.alert('Error', error.message);
     },
 });
+
+const pickImage = async () => {
+    let result  = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ['images'],
+        allowsEditing: true,
+        quality: 1,
+})
+    console.log(result);
+    if(!result.canceled) {
+        setImage(result.assets[0].uri);
+    }
+}
 
  
   
@@ -55,9 +70,20 @@ export default function NewPostScreen() {
             className="text-white text-lg"
             multiline
             numberOfLines={4}
+            /> 
+           {image && (
+            <Image 
+            source={{ uri: image}}
+            className='w-1/2 aspect-square rounded-lg my-4'
             />
+           )}
 
-            {error && <Text className="text-red-500 text-sm mt-4">{error.message}</Text>}
+
+            {error && ( <Text className="text-red-500 text-sm mt-4">{error.message}</Text>)}
+            <View className="flex-row items-center gap-2 mt-4">
+                <Entypo onPress={pickImage} name="images" size={20} color='gray' />
+            </View>
+
             <View className="mt-auto">
                 <Pressable onPress={() => mutate()}
                 className={`${isPending ? 'bg-white/50' : 'bg-white'} p-3 px-6 self-end rounded-full`}
