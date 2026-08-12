@@ -1,3 +1,4 @@
+import { supabase } from "@/lib/supabase";
 import { Tables } from "@/types/database.types";
 import { Feather } from "@expo/vector-icons";
 import dayjs from "dayjs";
@@ -98,6 +99,22 @@ export default function PostDetails({
             >
               {post.content}
             </Text>
+
+
+
+            {post.images && (
+
+        <View className="flex-row gap-2 mt-2">
+          {post.images.map((image) =>(
+             <Image key={image}
+            source={{uri: supabase.storage
+                .from('media')
+             .getPublicUrl(image).data.publicUrl,
+           }} 
+            className="w-full aspect-square  rounded-lg" />
+              ))}
+           </View>
+              )}
 
             <View
               style={{

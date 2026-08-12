@@ -14,8 +14,9 @@ export default function PostDetailsScreen() {
         queryFn: () => getPostbyId(id),
         staleTime: 1000 * 68 * 5,
     });
+   
 
-    const {} = useQuery({
+    const {data: parent} = useQuery({
         queryKey:['posts' ,post?.parent_id],
         queryFn: () => getPostbyId(post?.parent_id || ''),
         enabled: !!post?.parent_id,

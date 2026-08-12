@@ -8,11 +8,11 @@ import { Image, Pressable, Text, View } from "react-native";
 
 dayjs.extend(relativeTime);
 
-type PostWithUser= Tables<"posts"> & {
+type PostWithUser = Tables<"posts"> & {
   user: Tables<"profiles">;
   replies?: {
     count: number;
-  }[];  
+  }[];
 };
 
 function formatDate(value: string) {
@@ -20,19 +20,21 @@ function formatDate(value: string) {
 }
 
 export default function PostListItem({
-  post, isLastInGroup=true,
+  post,
+  isLastInGroup = true,
 }: {
-  post: PostWithUser; 
-  isLastInGroup?: boolean
+  post: PostWithUser;
+  isLastInGroup?: boolean;
 }) {
   return (
     <Link href={`/posts/${post.id}`} asChild>
       <Pressable
-      className={`flex-row  ${
-        isLastInGroup ? 'border-b border-gray-800/70': ''}`}
-      
+        className={`flex-row ${
+          isLastInGroup ? "border-b border-gray-800/70" : ""
+        }`}
       >
-        <View className="mr-3 items-center gap-2   ">
+        {/* Avatar + thread line */}
+        <View className="mr-3 items-center">
           <Image
             source={{
               uri:
@@ -43,137 +45,151 @@ export default function PostListItem({
               width: 44,
               height: 44,
               borderRadius: 9999,
-              marginRight: 10,
-            }} 
+            }}
           />
 
-         {!isLastInGroup &&
-          <View className=" w-[3px]  flex-1 rounded-full bg-neutral-700 translate-y-2 " /> }
+          {!isLastInGroup && (
+            <View className="mt-2 w-[3px] flex-1 rounded-full bg-neutral-700" />
+          )}
+        </View>
 
-          <View style={{ flex: 1 }}>
-            <View
+        {/* Post content */}
+        <View style={{ flex: 1 }}>
+          {/* Username + time */}
+          <View
+            style={{
+              marginBottom: 4,
+              flexDirection: "row",
+              flexWrap: "wrap",
+              alignItems: "center",
+            }}
+          >
+            <Text
               style={{
-                marginBottom: 4,
-                flexDirection: "row",
-                flexWrap: "wrap",
-                alignItems: "center",
+                marginRight: 8,
+                fontWeight: "600",
+                color: "white",
               }}
             >
-              <Text
-                style={{
-                  marginRight: 8,
-                  fontWeight: "600",
-                  color: "white",
-                }}
-              >
-                {post.user.full_name ?? post.user.username ?? "User"}
-              </Text>
-
-              <Text
-                style={{
-                  marginRight: 8,
-                  fontSize: 14,
-                  color: "#999",
-                }}
-              >
-                •
-              </Text>
-
-              <Text
-                style={{
-                  fontSize: 14,
-                  color: "#999",
-                }}
-              >
-                {formatDate(post.created_at)}
-              </Text>
-            </View>
+              {post.user.full_name ??
+                post.user.username ??
+                "User"}
+            </Text>
 
             <Text
               style={{
-                marginBottom: 12,
-                fontSize: 15,
-                lineHeight: 24,
-                color: "#e5e5e5",
+                marginRight: 8,
+                fontSize: 14,
+                color: "#999",
               }}
             >
-              {post.content}
+              •
             </Text>
 
-            {post.images && (
+            <Text
+              style={{
+                fontSize: 14,
+                color: "#999",
+              }}
+            >
+              {formatDate(post.created_at)}
+            </Text>
+          </View>
 
-              <View className="flex-row gap-2 mt-2">
-                {post.images.map((image) =(
-                  <Image key={image}
-                   source={{uri: supabase.storage
-                    .from('media')
-                    .getPublicUrl(image).data.publicUrl,
-                   }} 
-                   className="w-full aspect-square  rounded-lg" />
-                ))}
-                <View/>
-            )}
+          {/* Post text */}
+          <Text
+            style={{
+              marginBottom: 12,
+              fontSize: 15,
+              lineHeight: 24,
+              color: "#e5e5e5",
+            }}
+          >
+            {post.content}
+          </Text>
 
+          {/* Post images */}
+          {post.images && post.images.length > 0 && (
+            <View className="mt-2 flex-row gap-2">
+              {post.images.map((image : string) => (
+                <Image
+                  key={image}
+                  source={{
+                    uri: supabase.storage
+                      .from("media")
+                      .getPublicUrl(image).data.publicUrl,
+                  }}
+                  className="aspect-square w-full rounded-lg"
+                />
+              ))}
+            </View>
+          )}
+
+          {/* Actions */}
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              marginTop: 8,
+              marginBottom: 12,
+            }}
+          >
+            {/* Comments */}
             <View
               style={{
                 flexDirection: "row",
                 alignItems: "center",
-                justifyContent: "space-between",
               }}
             >
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                }}
-              >
-                <Feather
-                  name="message-circle"
-                  size={18}
-                  color="#999"
-                  style={{ marginRight: 6 }}
-                />
+              <Feather
+                name="message-circle"
+                size={18}
+                color="#999"
+                style={{ marginRight: 6 }}
+              />
 
-                <Text style={{ fontSize: 14, color: "#999" }}>
-                  0
-                </Text>
-              </View>
+              <Text style={{ fontSize: 14, color: "#999" }}>
+                0
+              </Text>
+            </View>
 
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                }}
-              >
-                <Feather
-                  name="repeat"
-                  size={18}
-                  color="#999"
-                  style={{ marginRight: 6 }}
-                />
+            {/* Reposts */}
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <Feather
+                name="repeat"
+                size={18}
+                color="#999"
+                style={{ marginRight: 6 }}
+              />
 
-                <Text style={{ fontSize: 14, color: "#999" }}>
-                  0
-                </Text>
-              </View>
+              <Text style={{ fontSize: 14, color: "#999" }}>
+                0
+              </Text>
+            </View>
 
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                }}
-              >
-                <Feather
-                  name="heart"
-                  size={18}
-                  color="#999"
-                  style={{ marginRight: 6 }}
-                />
+            {/* Likes */}
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <Feather
+                name="heart"
+                size={18}
+                color="#999"
+                style={{ marginRight: 6 }}
+              />
 
-                <Text style={{ fontSize: 14, color: "#999" }}>
-                  0
-                </Text>
-              </View>
+              <Text style={{ fontSize: 14, color: "#999" }}>
+                0
+              </Text>
             </View>
           </View>
         </View>
