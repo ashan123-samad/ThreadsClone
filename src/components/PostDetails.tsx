@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { Link } from "expo-router";
 import { Image, Pressable, Text, View } from "react-native";
+import SupabaseImage from "./SupabaseImage";
 
 dayjs.extend(relativeTime);
 
@@ -36,18 +37,11 @@ export default function PostDetails({
         }}
       >
         <View style={{ flexDirection: "row" }}>
-          <Image
-            source={{
-              uri:
-                post.user.avatar_url ??
-                "https://i.pravatar.cc/150",
-            }}
-            style={{
-              width: 44,
-              height: 44,
-              borderRadius: 9999,
-              marginRight: 10,
-            }}
+          
+           <SupabaseImage 
+           bucket="avatars"
+           path={post.user.avatar_url ?? ''}
+           className="w-12 h-12 rounded-full"
           />
 
           <View style={{ flex: 1 }}>

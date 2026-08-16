@@ -18,11 +18,9 @@ export const updateProfile = async (
     .from('profiles')
     .update(updateProfile)
     .eq('id', id)
-    .throwOnError()
     .select('*')
-    .single();
-
-
+    .single()
+    .throwOnError();
 
     return data;
     
