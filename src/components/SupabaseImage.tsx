@@ -4,7 +4,8 @@ import { ActivityIndicator, Image, Text } from "react-native";
 
 const downloadImage = async (
     bucket: string,
-    path: string
+    path: string,
+    transform: {width:number; height:number} | undefined
 ): Promise<string> => {
     const { data, error } = await supabase.storage
         .from(bucket)
@@ -38,15 +39,18 @@ export default function SupabaseImage({
     bucket,
     path,
     className,
+    transform
+    
 }: {
     bucket: string;
     path: string;
     className: string;
+    transform: {width:number; height:number} | undefined
 
 }) {
     const {data, isLoading, error} = useQuery({
         queryKey: ['supabaseImage', path],
-        queryFn: () => downloadImage (bucket, path), 
+        queryFn: () => downloadImage (bucket, path ,transform) 
            
     });
 

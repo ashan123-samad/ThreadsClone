@@ -1,10 +1,9 @@
-import { supabase } from "@/lib/supabase";
 import { Tables } from "@/types/database.types";
 import { Feather } from "@expo/vector-icons";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { Link } from "expo-router";
-import { Image, Pressable, Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import SupabaseImage from "./SupabaseImage";
 
 dayjs.extend(relativeTime);
@@ -42,6 +41,8 @@ export default function PostDetails({
            bucket="avatars"
            path={post.user.avatar_url ?? ''}
            className="w-12 h-12 rounded-full"
+           transform={{width:50, height:50}}
+
           />
 
           <View style={{ flex: 1 }}>
@@ -100,12 +101,13 @@ export default function PostDetails({
 
         <View className="flex-row gap-2 mt-2">
           {post.images.map((image) =>(
-             <Image key={image}
-            source={{uri: supabase.storage
-                .from('media')
-             .getPublicUrl(image).data.publicUrl,
-           }} 
-            className="w-full aspect-square  rounded-lg" />
+             <SupabaseImage
+              key={image}
+              bucket="media"
+              path={image}
+            className="w-full aspect-square  rounded-lg"
+            transform={{width:800, height:800}}
+             />
               ))}
            </View>
               )}

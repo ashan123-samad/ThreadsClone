@@ -1,10 +1,9 @@
-import { supabase } from "@/lib/supabase";
 import { Tables } from "@/types/database.types";
 import { Feather } from "@expo/vector-icons";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { Link } from "expo-router";
-import { Image, Pressable, Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import SupabaseImage from "./SupabaseImage";
 
 dayjs.extend(relativeTime);
@@ -40,6 +39,7 @@ export default function PostListItem({
            bucket="avatars"
            path={post.user.avatar_url ?? ''}
            className="w-12 h-12 rounded-full"
+           transform={{width:50, height:50}}
           />
 
           {!isLastInGroup && (
@@ -106,14 +106,12 @@ export default function PostListItem({
           {post.images && post.images.length > 0 && (
             <View className="mt-2 flex-row gap-2">
               {post.images.map((image : string) => (
-                <Image
+                <SupabaseImage
                   key={image}
-                  source={{
-                    uri: supabase.storage
-                      .from("media")
-                      .getPublicUrl(image).data.publicUrl,
-                  }}
+                  bucket="media"
+                  path={image}
                   className="aspect-square w-full rounded-lg"
+                  transform={{width:500, height:500}}
                 />
               ))}
             </View>
